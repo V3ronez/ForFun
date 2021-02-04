@@ -13,23 +13,27 @@ const LINE_THROUGH = "lineThrough"
 let LIST, id
 
 //get item from localStorage
-let data = localStorage.getItem("TODO")
+let data = localStorage.getItem("ToDo")
 
-// check if data is not empty
-// if(data){
-//     LIST = JSON.parse(data);
-//     id = LIST.length
-//     loadList(list)
+//check if data is empty
+// if (data) {
+//     LIST = JSON.stringify(data)
+//     id = LIST.lenght
+//     loadList(LIST)
 // } else {
 //     LIST = []
 //     id = 0
 // }
-// //load items to the user's interface
+
 // function loadList(array) {
-//     array.forEach(function(item){
-//         addToDo(item.nome, item.id, item.donen, item.trash)
-//     });
+//     array.forEach(function (item) {
+//         addToDo(item.name, item.id, item.done, item.trash)
+//     })
 // }
+
+//add item to localStorage
+localStorage.setItem("ToDo", JSON.stringify(data))
+
 
 // mostrar data
 const options = { weekday: "long", month: "short", day: "numeric" }
@@ -68,16 +72,16 @@ document.addEventListener("keyup", function (e) {
             document.getElementById('input').value = ""
             addToDo(toDo)
 
-            LIST.push({
-                name: toDo,
-                id: id,
-                done: false,
-                trash: false
-            })
+            // LIST.push({
+            //     name: toDo,
+            //     id: id,
+            //     done: false,
+            //     trash: false
+            // })
             //add item localStorage (add where the LIST array is updated)
-            localStorage.setItem("TODO", JSON.stringify(LIST))
+            localStorage.setItem("ToDo", JSON.stringify(data))
             id++
-            
+
         }
     }
 })
@@ -111,6 +115,7 @@ list.addEventListener("click", (event) => {
     }
 
     //add item localStorage (add where the LIST array is updated)
-    localStorage.setItem("TODO", JSON.stringify(LIST))
+    localStorage.setItem("ToDo", JSON.stringify(data))
+
 })
 
